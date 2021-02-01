@@ -1,12 +1,15 @@
 document.getElementById("pinGenerator").addEventListener("click",
     function()
     {
-        var key = Math.random()*10000;
-        var keyRounded = Math.round(key);
-        if (keyRounded > 999) 
-        {
-            document.getElementById("generatedInput").value = keyRounded;
-        }
+        var key = pin();
+        document.getElementById("generatedInput").value = key;
+        
+        // var key = Math.random()*10000;
+        // var keyRounded = Math.round(key);
+        // if (keyRounded > 999) 
+        // {
+        //     document.getElementById("generatedInput").value = keyRounded;
+        // }
     }
 );
 document.getElementById("0").addEventListener("click",
@@ -108,6 +111,20 @@ document.getElementById("submit").addEventListener("click",
         }
     }
 );
+function pin () 
+{
+    var key = Math.random()*10000;
+    var keyRounded = Math.round(key);
+    if (keyRounded > 999) 
+    {
+        return keyRounded;
+    }
+    else
+    {
+        return pin();
+    }
+}
+
 function keyBoardInput(value)
     {
         var enteredInput = document.getElementById("enteredInput").value + "";
